@@ -1,2 +1,3 @@
 # removeBg
-This removes background and extracts objects from image.   python, flask
+This removes background and extracts objects from image.   
+techs : python, flask
