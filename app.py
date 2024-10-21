@@ -7,7 +7,7 @@ import numpy as np
 
 app = Flask(__name__)
 CORS(app)
-print("ffff")
+print("gggg")
 #CORS(app, resources={r"/*": {"origins": ["http://localhost:3000", "http://picground.co.uk"]}})
 
 # Route to remove background using the default rembg model
@@ -109,4 +109,5 @@ def remove_background_input_points():
     return send_file(output_io, mimetype='image/png')
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=80)
+    #app.run(host='0.0.0.0', port=80)
+    app.run(host='0.0.0.0', port=80, debug=True)
