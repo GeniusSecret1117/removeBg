@@ -7,8 +7,8 @@ from PIL import Image
 import numpy as np
 
 app = Flask(__name__)
-#CORS(app)
-CORS(app, resources={r"/*": {"origins": "http://localhost:3000"}})
+CORS(app)
+#CORS(app, resources={r"/*": {"origins": "http://localhost:3000"}})
 
 @app.route('/remove-background', methods=['POST'])
 def remove_background():
