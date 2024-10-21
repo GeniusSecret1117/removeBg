@@ -7,11 +7,9 @@ import numpy as np
 
 app = Flask(__name__)
 CORS(app)
-print("gggg")
+print("eeeee")
 #CORS(app, resources={r"/*": {"origins": ["http://localhost:3000", "http://picground.co.uk"]}})
-@app.route('/rrr', methods=['POST'])
-def rrr():
-    return "dsfd"
+
 # Route to remove background using the default rembg model
 @app.route('/remove-background', methods=['POST'])
 def remove_background():
@@ -111,5 +109,4 @@ def remove_background_input_points():
     return send_file(output_io, mimetype='image/png')
 
 if __name__ == '__main__':
-    #app.run(host='0.0.0.0', port=80)
-    app.run(host='0.0.0.0', port=80, debug=True)
+    app.run(host='0.0.0.0', port=8000)
