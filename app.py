@@ -6,9 +6,8 @@ from PIL import Image
 import numpy as np
 
 app = Flask(__name__)
-CORS(app)
-#CORS(app, resources={r"/*": {"origins": "http://picground.co.uk"}})
-#CORS(app, resources={r"/*": {"origins": "http://localhost:3000"}})
+
+#CORS(app, resources={r"/*": {"origins": ["http://localhost:3000", "http://picground.co.uk"]}})
 
 # Route to remove background using the default rembg model
 @app.route('/remove-background', methods=['POST'])
@@ -25,8 +24,12 @@ def remove_background():
     output_io = BytesIO()
     img.save(output_io, format='PNG')
     output_io.seek(0)  # Move to the start of the BytesIO buffer
-
-    return send_file(output_io, mimetype='image/png')
+    response = make_response(send_file(output_io, mimetype='image/png'))
+    response.headers.add("Access-Control-Allow-Origin", "*")  # Allow all origins or restrict it
+    response.headers.add("Access-Control-Allow-Headers", "Content-Type")
+    response.headers.add("Access-Control-Allow-Methods", "POST")
+    return response
+    #return send_file(output_io, mimetype='image/png')
 
 # Route to remove background using a specific model
 @app.route('/remove-background-isnet', methods=['POST'])
