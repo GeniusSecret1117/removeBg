@@ -7,8 +7,8 @@ import numpy as np
 
 app = Flask(__name__)
 CORS(app)
-CORS(app, resources={r"/*": {"origins": "http://picground.co.uk"}})
-CORS(app, resources={r"/*": {"origins": "http://localhost:3000"}})
+#CORS(app, resources={r"/*": {"origins": "http://picground.co.uk"}})
+#CORS(app, resources={r"/*": {"origins": "http://localhost:3000"}})
 
 # Route to remove background using the default rembg model
 @app.route('/remove-background', methods=['POST'])
