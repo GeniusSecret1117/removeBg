@@ -9,7 +9,9 @@ app = Flask(__name__)
 CORS(app)
 print("gggg")
 #CORS(app, resources={r"/*": {"origins": ["http://localhost:3000", "http://picground.co.uk"]}})
-
+@app.route('/rrr', methods=['POST'])
+def rrr():
+    return "dsfd"
 # Route to remove background using the default rembg model
 @app.route('/remove-background', methods=['POST'])
 def remove_background():
