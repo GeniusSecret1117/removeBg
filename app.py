@@ -111,5 +111,7 @@ def remove_background_input_points():
 
     return send_file(output_io, mimetype='image/png')
 
+#if __name__ == '__main__':
+#    app.run(host='0.0.0.0', port=8000)
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8000)
+    app.run(ssl_context=('cert.pem', 'key.pem'))  # Use HTTPS
