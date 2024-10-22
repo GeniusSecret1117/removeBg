@@ -6,10 +6,13 @@ from PIL import Image
 import numpy as np
 
 app = Flask(__name__)
-#CORS(app)
+CORS(app)
 #print("eeeee")
-CORS(app, resources={r"/*": {"origins": ["http://155.94.255.2:3000"]}})
-
+#CORS(app, resources={r"/*": {"origins": ["http://155.94.255.2:3000"]}})
+@app.after_request
+def add_headers(response):
+    response.headers['Referrer-Policy'] = 'no-referrer-when-downgrade'
+    return response
 # Route to remove background using the default rembg model
 @app.route('/remove-background', methods=['POST'])
 def remove_background():
