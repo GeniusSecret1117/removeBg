@@ -6,9 +6,9 @@ from PIL import Image
 import numpy as np
 
 app = Flask(__name__)
-CORS(app)
+#CORS(app)
 #print("eeeee")
-#CORS(app, resources={r"/*": {"origins": ["http://155.94.255.2:3000"]}})
+CORS(app, resources={r"/*": {"origins": ["https://picground.co.uk"]}})
 @app.after_request
 def add_headers(response):
     response.headers['Referrer-Policy'] = 'no-referrer-when-downgrade'
