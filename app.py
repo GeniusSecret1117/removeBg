@@ -1,3 +1,8 @@
+#import os
+#os.environ['OPENBLAS_NUM_THREADS'] = '1'
+#import sys
+
+
 from flask import Flask, request, send_file
 from rembg import new_session, remove
 from io import BytesIO
@@ -6,13 +11,8 @@ from PIL import Image
 import numpy as np
 
 app = Flask(__name__)
-#CORS(app)
-#print("eeeee")
-CORS(app, resources={r"/*": {"origins": ["https://picground.co.uk"]}})
-@app.after_request
-def add_headers(response):
-    response.headers['Referrer-Policy'] = 'no-referrer-when-downgrade'
-    return response
+CORS(app)
+#CORS(app, resources={r"/*": {"origins": ["https://picground.co.uk"]}})
 # Route to remove background using the default rembg model
 @app.route('/remove-background', methods=['POST'])
 def remove_background():
@@ -112,6 +112,11 @@ def remove_background_input_points():
     return send_file(output_io, mimetype='image/png')
 
 #if __name__ == '__main__':
-#    app.run(host='0.0.0.0', port=8000)
+ #   app.run(host='127.0.0.1', port=8000)
+ 
+@app.route('/test', methods=['GET'])
+def helloWorld():
+    return 'Hello jeet'
+
 if __name__ == '__main__':
-    app.run(ssl_context=('cert.pem', 'key.pem'))  # Use HTTPS
+    app.run()
